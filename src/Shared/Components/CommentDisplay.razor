@@ -1,0 +1,20 @@
+@namespace alab.Components
+
+<div class="CommentDisplay">
+    <div class="CommentDisplay--sender">
+        <span>@name</span>
+        <span>@email</span>
+    </div>
+    <div class="CommentDisplay--body">@body</div>
+</div>
+
+@code {
+    [Parameter]
+    public string name { get; set; }
+
+    [Parameter]
+    public string email { get; set; }
+
+    [Parameter]
+    public string body { get; set; }
+}

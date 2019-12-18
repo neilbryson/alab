@@ -1,0 +1,6 @@
+.idea/
+[Oo]bj/
+[Bb]in/
+[Dd]ebug/
+
+*.code-workspace
