@@ -1,14 +1,17 @@
+* {
+  font-family: 'Lucida Console', monospace;
+}
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Lucida Console', monospace;
 }
 
 .CommentDisplay {
   display: flex;
   flex-flow: column nowrap;
-  margin: 0 40px;
+  margin: 0 40px 15px;
 }
 
 .CommentDisplay .CommentDisplay--sender {
@@ -20,6 +23,19 @@ body {
 
 .CommentDisplay .CommentDisplay--sender span:first-of-type {
   font-weight: 600;
+  text-decoration: underline;
+}
+
+.CommentDisplay .CommentDisplay--body {
+  font-size: 32px;
+}
+
+.NextButton {
+  border: none;
+  background-color: #0074D9;
+  height: 32px;
+  font-size: 18px;
+  color: #FBFBFB;
 }
 
 #blazor-error-ui {

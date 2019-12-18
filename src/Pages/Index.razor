@@ -3,25 +3,14 @@
 @using alab.Components
 
 <h1>Comments</h1>
-<CommentDisplay body="@body" email="@email" name="@name" />
+<CommentDisplay commentNumber="@commentNumber" />
+<button class="NextButton" @onclick="Next">Next comment</button>
 
 
 @code {
-    private Api api = new Api("jsonplaceholder.typicode.com", "443");
-    private string name;
-    private string body;
-    private string email;
+    private int commentNumber = 1;
 
-    protected override async Task OnInitializedAsync() {
-        var comment = await api.GetData<Comment>("/comments/1");
-        name = comment.name;
-        body = comment.body;
-        email = comment.email;
-    }
-
-    public class Comment {
-        public string name { get; set; }
-        public string email { get; set; }
-        public string body { get; set; }
+    private void Next() {
+        commentNumber++;
     }
 }

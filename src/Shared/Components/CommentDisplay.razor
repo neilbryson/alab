@@ -1,20 +1,37 @@
 @namespace alab.Components
+@using alab.Services
 
 <div class="CommentDisplay">
     <div class="CommentDisplay--sender">
         <span>@name</span>
         <span>@email</span>
     </div>
-    <div class="CommentDisplay--body">@body</div>
+    <div class="CommentDisplay--body">“@body”</div>
 </div>
 
 @code {
     [Parameter]
-    public string name { get; set; }
+    public int commentNumber { get; set; }
 
-    [Parameter]
-    public string email { get; set; }
+    private Api api = new Api("jsonplaceholder.typicode.com", "443");
+    private string name;
+    private string body;
+    private string email;
 
-    [Parameter]
-    public string body { get; set; }
+    protected override async Task OnInitializedAsync() => await UpdateComment();
+
+    protected override async Task OnParametersSetAsync() => await UpdateComment();
+
+    private async Task UpdateComment() {
+        var comment = await api.GetData<Comment>($"/comments/{commentNumber}");
+        name = comment.name;
+        body = comment.body;
+        email = comment.email;
+    }
+
+    public class Comment {
+        public string name { get; set; }
+        public string email { get; set; }
+        public string body { get; set; }
+    }
 }
